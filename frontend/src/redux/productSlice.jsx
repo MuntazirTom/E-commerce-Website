@@ -16,7 +16,7 @@ setProducts(state, action){
 },
 setSearchTerm(state, action){
     state.searchTerm = action.payload
-    state.filteredData = state.products.filter(product => product.name.toLowerCase().includes(state.searchTerm.toLocaleLowerCase()))
+    state.filteredData = state.products.filter(product => product.name.toLowerCase().includes(state.searchTerm.toLowerCase()))
 }
     }
     

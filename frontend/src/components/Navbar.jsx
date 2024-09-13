@@ -12,7 +12,14 @@ import { setSearchTerm } from '../redux/productSlice'
 const Navbar = () => {
     const [isModelOpen, setIsModelOpen] = useState(false)
     const [isLogIn, setIsLogIn] = useState(true)
+    const [search, setSearch] = useState()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const handelSearch = (e) => {
+        e.preventDefault()
+        dispatch(setSearchTerm(search))
+        navigate('/filter-data')
+    }
 
 const openSignUp = () =>{
     setIsLogIn(false)
@@ -21,13 +28,6 @@ const openSignUp = () =>{
 const openLogin = () =>{
     setIsLogIn(true)
     setIsModelOpen(true)
-}
-const dispatch = useDispatch()
-const [search, setSearch] = useState()
-const handelSearch = (e) => {
-    e.preventDefault()
-    dispatch(setSearchTerm(search))
-    navigate('/filter-data')
 }
 
     const products = useSelector(state => state.cart.products)
